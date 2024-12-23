@@ -1,0 +1,175 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+header {
+    background-color: rgb(35, 28, 26, 0.8);
+    z-index: 1000;
+    height: 80px;
+    width: 100%;
+    position: fixed;
+}
+
+h1 {
+    color: white;
+    position: absolute;
+    left: 120px;
+    top: 0;
+    line-height: 80px;
+    background-image: url(#);
+    background-repeat: no-repeat;
+    background-position: center;
+    width: 210px;
+    animation: fadeInTitle 1s ease-in-out;
+    animation-fill-mode: forwards;
+}
+
+header ul {
+    z-index: 100;
+    position: absolute;
+    right: 5vw;
+    top: 0;
+    line-height: 80px;
+}
+
+header li {
+    display: inline-block;
+    margin-right: 4vw;
+}
+
+header a {
+    color: white;
+    text-decoration: none;
+}
+
+header a:hover {
+    text-decoration: underline;
+}
+
+.menu {
+    display: none;
+    background-color: transparent;
+    color: white;
+    font-size: 35px;
+    position: absolute;
+    top: 15px;
+    left: 20px;
+    border: none;
+    cursor: pointer;
+}
+
+/* 响应式设计 */
+@media screen and (max-width: 768px) {
+    header ul {
+        display: none;
+    }
+
+    header h1 {
+        left: 50%;
+        transform: translateX(-50%);
+    }
+
+    .menu {
+        display: block;
+    }
+
+    header nav ul {
+        z-index: 101!important;
+        display: none;
+        position: absolute;
+        top: 80px;
+        left: 0;
+        right: 0;
+        background-color: rgb(35, 28, 26, 0.8);
+        width: 30%;
+    }
+
+    header nav ul.active {
+        display: block;
+        transform: translateX(0);
+    }
+
+    header li {
+        display: block;
+        margin: 10px 0;
+        padding-left: 2px;
+        text-align: center;
+    }
+
+    .menu.active {
+        color: #E0E9A3;
+    }
+}
+
+@keyframes fadeInTitle {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+.card {
+    position: absolute;
+    top: 1610px;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    display: grid;
+    gap: 2rem;
+    grid-auto-flow: dense;
+    grid-template-columns: repeat(4, 30ch);
+}
+
+.txt {
+    overflow: hidden;
+    border-radius: 10px;
+    line-height: 6;
+    box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.2);
+    font-size: 32px;
+    letter-spacing: 5px;
+    color: #fff;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    background-image: linear-gradient(to bottom right,
+    #0b0c0c,
+    #141715,
+    #0e1b15,
+    #181419,
+    #0d2211,
+    #291f22);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    opacity: 0; /* 初始状态设置为透明，不可见 */
+    transform: translateY(50px); /* 初始位置向下偏移一点，模拟未进入可视区域的状态 */
+    transition: all 0.6s ease-in-out; /* 添加过渡效果，让动画变化更平滑 */
+    scroll-margin-top: 100px; /* 设置滚动边距，当滚动到距离元素顶部100px的位置时，触发动画（可根据实际情况调整数值） */
+}
+
+.txt img {
+    max-width: 100%;
+    max-height: 100%;
+    height: auto;
+    width: auto;
+}
+
+.txt.show {
+    opacity: 1; /* 当添加.show类时，变为完全不透明，可见 */
+    transform: translateY(0); /* 回到正常位置，实现滑动出现的效果 */
+}
+
+.txt:nth-of-type(4n) {
+    grid-column: span 2;
+}
+
+.txt:nth-of-type(5n) {
+    grid-column: span 2;
+}
+
+.txt:nth-of-type(7n) {
+    grid-column: span 2;
+}

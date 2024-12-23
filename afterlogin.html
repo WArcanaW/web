@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="afterlogin.css">
+  <title>次元晴的小铺</title>
+  <style>
+    body {
+      position: relative;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      background-color: black;
+    }
+  </style>
+</head>
+
+<body>
+<header>
+  <button class="menu">&#9776;</button>
+  <h1>阿卡纳的小铺</h1>
+  <nav>
+    <ul>
+      <li><a href="index.html">主页 </a></li>
+      <li><a href="preview/preview.html">预览</a></li>
+      <li><a href="aboutus.html">关于我们</a></li>
+    </ul>
+  </nav>1
+</header>
+
+<div class="card">
+  <div class="txt"><img src="./image/3.png" alt=""></div>
+  <div class="txt">NO/INFO</div>
+  <div class="txt">NO/INFO</div>
+  <div class="txt">NO/INFO</div>
+  <div class="txt"><img src="./image/2.png" alt=""></div>
+  <div class="txt">NO/INFO</div>
+  <div class="txt">NO/INFO</div>
+  <div class="txt">NO/INFO</div>
+  <div class="txt">NO/INFO</div>
+  <div class="txt"><img src="./image/3.png" alt=""></div>
+  <div class="txt">NO/INFO</div>
+  <div class="txt"><img src="./image/three.png" alt=""></div>
+  <div class="txt">NO/INFO</div>
+  <div class="txt">NO/INFO</div>
+  <div class="txt"><img src="./image/4.png" alt=""></div>
+  <div class="txt">NO/INFO</div>
+  <div class="txt"><img src="./image/two.png" alt=""></div>
+  <div class="txt">NO/INFO</div>
+  <div class="txt">NO/INFO</div>
+  <div class="txt"><img src="./image/5.png" alt=""></div>
+  <div class="txt">NO/INFO</div>
+  <div class="txt"><img src="./image/one.png" alt=""></div>
+  <div class="txt">NO/INFO</div>
+  <div class="txt">NO/INFO</div>
+  <div class="txt"><img src="./image/6.png" alt=""></div>
+</div>
+
+<script>
+  // 获取所有具有.txt类名的元素
+  const txtElements = document.querySelectorAll('.txt');
+
+  // 创建一个IntersectionObserver实例，用于观察元素是否进入可视区域
+  const observer = new IntersectionObserver((entries, observer) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        // 当元素进入可视区域时，给元素添加.show类名，触发CSS中的动画效果
+        entry.target.classList.add('show');
+        // 可选：如果只想让动画执行一次，可以取消对该元素的观察
+        observer.unobserve(entry.target);
+      }
+    });
+  }, {
+    root: null, // 观察的根元素，null表示基于浏览器视口
+    rootMargin: '0px', // 根元素的外边距，可根据需要调整
+    threshold: 0.2 // 元素进入可视区域的比例阈值，0.2表示元素有20%进入可视区域时就触发回调，可调整
+  });
+
+  // 对每个.txt元素开始观察
+  txtElements.forEach(element => {
+    observer.observe(element);
+  });
+
+  const menuButton = document.querySelector('.menu');
+  const navList = document.querySelector('header nav ul');
+
+  menuButton.addEventListener('click', function () {
+    console.log('点击事件触发了');
+    navList.classList.toggle('active');
+    menuButton.classList.toggle('active');
+  });
+
+</script>
+</body>
+
+</html>

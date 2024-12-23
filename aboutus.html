@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="aboutus.css">
+  <title>阿卡纳的小铺</title>
+  <style>
+    body {
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      background-color: black;
+    }
+  </style>
+</head>
+
+<body>
+<header>
+  <button class="menu">&#9776;</button>
+  <h1>阿卡纳的小铺</h1>
+  <nav>
+    <ul>
+      <li><a href="index.html">主页 </a></li>
+      <li><a href="preview/preview.html">预览</a></li>
+      <li><a href="aboutus.html">关于我</a></li>
+      <li><a href="./login/_login%20.html">登陆</a></li>
+    </ul>
+  </nav>
+</header>
+
+<div class="shell">
+  <div class="box">
+    <img src="./image/one.png" alt="">
+    <span>身</span>
+  </div>
+  <div class="box">
+    <img src="./image/two.png" alt="">
+    <span>心</span>
+  </div>
+  <div class="box">
+    <img src="./image/three.png" alt="">
+    <span>花</span>
+  </div>
+  <div class="box">
+    <img src="./image/WechatIMG2848.jpg" alt="">
+    <span>诗</span>
+  </div >
+  <div class="box">
+    <img src="./image/four.png" alt="">
+    <span>曲</span>
+  </div>
+</div>
+
+<script>
+  const menuButton = document.querySelector('.menu');
+  const navList = document.querySelector('header nav ul');
+
+  // 新增的函数，用于处理图片加载完成后的操作
+  function handleImageLoad(img, box) {
+    const body = document.body;
+    body.style.backgroundImage = `url('${img.src}')`;
+    body.classList.add('blur-bg');
+  }
+
+  // 新增的函数，用于加载图片并监听加载完成事件
+  function loadImageAndSetBg(url, box) {
+    const img = new Image();
+    img.src = url;
+    img.onload = function () {
+      handleImageLoad(img, box);
+    };
+  }
+
+  const boxes = document.querySelectorAll('.box');
+  boxes.forEach((box) => {
+    const img = box.querySelector('img');
+    box.addEventListener('mouseenter', function () {
+      const imgUrl = img.src;
+      loadImageAndSetBg(imgUrl, box);
+    });
+    box.addEventListener('mouseleave', function () {
+      document.body.style.backgroundImage = 'none';
+      document.body.classList.remove('blur-bg');
+    });
+  });
+
+  menuButton.addEventListener('click', function () {
+    console.log('点击事件触发了');
+    navList.classList.toggle('active');
+    menuButton.classList.toggle('active');
+  });
+</script>
+</body>
+
+</html>

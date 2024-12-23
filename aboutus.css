@@ -1,0 +1,218 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+header {
+    background-color: rgb(35, 28, 26, 0.8);
+    z-index: 1000;
+    height: 80px;
+    width: 100%;
+    position: fixed;
+}
+
+h1 {
+    color: white;
+    position: absolute;
+    left: 120px;
+    top: 0;
+    line-height: 80px;
+    background-image: url(#);
+    background-repeat: no-repeat;
+    background-position: center;
+    width: 210px;
+    animation: fadeInTitle 1s ease-in-out;
+    animation-fill-mode: forwards;
+}
+
+header ul {
+    z-index: 100;
+    position: absolute;
+    right: 5vw;
+    top: 0;
+    line-height: 80px;
+}
+
+header li {
+    display: inline-block;
+    margin-right: 4vw;
+}
+
+header a {
+    color: white;
+    text-decoration: none;
+}
+
+header a:hover {
+    text-decoration: underline;
+}
+
+.menu {
+    display: none;
+    background-color: transparent;
+    color: white;
+    font-size: 35px;
+    position: absolute;
+    top: 15px;
+    left: 20px;
+    border: none;
+    cursor: pointer;
+}
+
+.shell {
+    width: 90%;
+    height: 700px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    margin-left: 100px;
+    margin-top: 10px;
+    top: 100px;
+}
+
+/* 响应式设计 */
+@media screen and (max-width: 768px) {
+    header ul {
+        display: none;
+    }
+
+    header h1 {
+        left: 50%;
+        transform: translateX(-50%);
+    }
+
+    .menu {
+        display: block;
+    }
+
+    header nav ul {
+        z-index: 101!important;
+        display: none;
+        position: absolute;
+        top: 80px;
+        left: 0;
+        right: 0;
+        background-color: rgb(35, 28, 26, 0.8);
+        width: 30%;
+    }
+
+    header nav ul.active {
+        display: block;
+        transform: translateX(0);
+    }
+
+    header li {
+        display: block;
+        margin: 10px 0;
+        padding-left: 2px;
+        text-align: center;
+    }
+
+    .menu.active {
+        color: #E0E9A3;
+    }
+
+    .shell {
+        width: 90%;
+        height: 700px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        position: absolute;
+        margin-left: 50px;
+        margin-top: 10px;
+        top: 100px;
+        flex-direction: column;
+    }
+    .box>span {
+         font: 0;
+         color: white;
+         text-align: center;
+         height: 15%;
+         display: flex; /* 恢复 display 属性为 flex，让内部元素能正常布局（如果原本有布局需求的话） */
+         justify-content: center;
+         align-items: center;
+         visibility: hidden; /* 设置为 hidden 使文字不可见，但仍占据空间 */
+     }
+}
+
+@keyframes fadeInTitle {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+
+
+}
+
+.shell {
+    width: 90%;
+    height: 700px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.box {
+    flex: 1;
+    overflow: hidden;
+    transition:.5s;
+    margin: 0 20px;
+    box-shadow: 10px 10px 20px rgba(0, 0, 0, 0.5);
+    border-radius: 20px;
+    border: 10px solid white;
+    position: relative;
+}
+
+.box::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 1;
+    filter: blur(0);
+    transition:.5s;
+}
+
+.box:hover::before {
+    filter: blur(5px);
+}
+
+.box>img {
+    width: 200%;
+    height: 85%;
+    object-fit: cover;
+    transition:.5s;
+}
+
+.box>span {
+    font: 200 45px "宋体";
+    color: white;
+    text-align: center;
+    height: 15%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.box:hover {
+    flex-basis: 40%;
+}
+
+.box:hover>img {
+    width: 100%;
+    height: 100%;
+}
+
+/* 新增的用于设置模糊背景的类 */
+.blur-bg {
+    backdrop-filter: blur(5px); /* 根据喜好调整模糊度数值，这里设置为5px */
+    -webkit-backdrop-filter: blur(5px); /* 兼容webkit内核浏览器 */
+}
