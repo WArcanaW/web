@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="preview.css">
+  <title>音乐盒子</title>
+</head>
+
+<body>
+
+<header>
+  <button class="menu">&#9776;</button>
+  <h1>阿卡纳的小铺</h1>
+  <nav>
+    <ul>
+      <li><a href="../index.html">主页 </a></li>
+      <li><a href="preview.html">预览</a></li>
+      <li><a href="../aboutus.html">关于我们</a></li>
+      <li><a href="../login/_login%20.html">登陆</a></li>
+    </ul>
+  </nav>
+</header>
+
+<div class="music-box">
+  <img id="albumCover" src="../image/5.png" alt="专辑封面" class="cover-image">
+  <audio id="audioPlayer" controls></audio>
+  <div class="controls">
+    <button id="prevButton">上一首</button>
+    <button id="playButton">播放/暂停</button>
+    <button id="nextButton">下一首</button>
+  </div>
+</div>
+<!-- 添加背景图片容器 -->
+<div id="bg-container"></div>
+
+<script src="script.js"></script>
+</body>
+
+</html>
